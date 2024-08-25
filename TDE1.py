@@ -4,8 +4,8 @@
 
 def formatar_conjunto(conjunto):
     if all(isinstance(i, tuple) for i in conjunto):
-        return '{' + ', ' .join(f"({x},{y})" for x, y in conjunto) + '}'
-    return '{' + ',' .join(conjunto) + '}'
+        return '{ ' + ' , ' .join(f"({x}, {y})" for x, y in conjunto) + ' }'
+    return '{ ' + ', ' .join(conjunto) + ' }'
 
 
 def ler_operacoes(nome_arquivo):
