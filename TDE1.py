@@ -2,6 +2,12 @@
 # Turma: A
 # Curso: Bacharelado em Ciência da Computação
 
+def formatar_conjunto(conjunto):
+    if all(isinstance(i, tuple) for i in conjunto):
+        return '{' + ', ' .join(f"({x},{y})" for x, y in conjunto) + '}'
+    return '{' + ',' .join(conjunto) + '}'
+
+
 def ler_operacoes(nome_arquivo):
     with open(nome_arquivo, 'r') as arquivo:
         quantidade_operacoes = int(arquivo.readline().strip())
@@ -16,17 +22,16 @@ def ler_operacoes(nome_arquivo):
 
             if operacao == 'U':
                 resolucao = sorted(set(conjunto1) | set(conjunto2))
-                resultados.append(f"União: conjunto 1 {conjunto1}, conjunto 2 {conjunto2}. Resultado: {resolucao}")
+                resultados.append(f"União: conjunto 1 {formatar_conjunto(conjunto1)}, conjunto 2 {formatar_conjunto(conjunto2)}. Resultado: {formatar_conjunto(resolucao)}")
             elif operacao == 'I':
                 resolucao = sorted(set(conjunto1) & set(conjunto2))
-                resultados.append(f"Interseção: conjunto 1 {conjunto1}, conjunto 2 {conjunto2}. Resultado: {resolucao}")
+                resultados.append(f"Interseção: conjunto 1 {formatar_conjunto(conjunto1)}, conjunto 2 {formatar_conjunto(conjunto2)}. Resultado: {formatar_conjunto(resolucao)}")
             elif operacao == 'D':
                 resolucao = sorted(set(conjunto1) - set(conjunto2))
-                resultados.append(f"Diferença: conjunto 1 {conjunto1}, conjunto 2 {conjunto2}. Resultado: {resolucao}")
+                resultados.append(f"Diferença: conjunto 1 {formatar_conjunto(conjunto1)}, conjunto 2 {formatar_conjunto(conjunto2)}. Resultado: {formatar_conjunto(resolucao)}")
             elif operacao == 'C':
                 resolucao = sorted((x, y) for x in conjunto1 for y in conjunto2)
-                resultados.append(f"Produto Cartesiano: conjunto 1 {conjunto1}, conjunto 2 {conjunto2}. Resultado: {resolucao}")
-
+                resultados.append(f"Produto Cartesiano: conjunto 1 {formatar_conjunto(conjunto1)}, conjunto 2 {formatar_conjunto(conjunto2)}. Resultado: {formatar_conjunto(resolucao)}")
         return resultados
 
 def converter_resultado_txt(resultados):
