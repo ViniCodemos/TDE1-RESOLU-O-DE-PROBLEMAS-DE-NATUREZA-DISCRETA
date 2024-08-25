@@ -1,6 +1,7 @@
 # Nome: Vinicius Edivaldo Souza Penhorato
 # Turma: A
 # Curso: Bacharelado em Ciência da Computação
+# Disciplina: Resolução de Problemas de Natureza Discreta
 
 def formatar_conjunto(conjunto):
     if all(isinstance(i, tuple) for i in conjunto):
